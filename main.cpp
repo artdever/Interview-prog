@@ -3,7 +3,7 @@
 
 int main() {
 	
-	txt_to_csv("Input", "Output");
+	txt_to_csv("input.txt", "output.csv");
 
 	return 0;
 }

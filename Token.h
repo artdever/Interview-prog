@@ -8,7 +8,6 @@ class Token
 public:
 	explicit Token(std::string line, unsigned int row);
 	void write();
-	char* read();
 	std::string get_word(const unsigned int i);
 	unsigned int size();
 
