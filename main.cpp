@@ -1,9 +1,11 @@
-#include "txt_to_csv.h"
-
+#include "TextToCsvConverter.h"
 
 int main() {
 	
-	txt_to_csv("input.txt", "output.csv");
+	TextToCsvConverter t;
+	t.convert("input.txt");
+	t.printWarnings();
+	t.write("output.csv");
 
 	return 0;
 }
