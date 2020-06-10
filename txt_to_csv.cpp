@@ -15,13 +15,21 @@ void txt_to_csv(const char* input, const char* out) {
 			std::ofstream newfile(out);
 			unsigned int row = 0;
 			
-			do {
 				t = new Token(line,row);
-				for(int i = 0; i < t->size(); ++i)
+				unsigned int size_header = t->size();
+				for(int i = 0; i < size_header; ++i)
 					newfile << t->get_word(i)<<";";
 				newfile << "\n";
-				++row;
-			} while (getline(myfile, line));
+				
+				while (getline(myfile, line)) {
+					++row;
+					
+					t = new Token(line, row, size_header);
+
+					for (int i = 0; i < t->size(); ++i)
+						newfile << t->get_word(i) << ";";
+					newfile << "\n";
+			 }
 			newfile.close();
 			delete t;
 		}
