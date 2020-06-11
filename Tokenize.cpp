@@ -44,7 +44,7 @@ void Tokenize::tokenize(std::string line)
 			s += "WARNING: There is not argument in  ";
 			s += std::to_string(row + 1);
 			s += " row ";
-			s += std::to_string(column);
+			s += std::to_string(column + 1);
 			s += " column\n";
 			r.addWarning(Warning(s));
 		}
