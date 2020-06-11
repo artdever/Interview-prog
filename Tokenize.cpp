@@ -1,20 +1,22 @@
 #include "Tokenize.h"
 
-std::vector<Row> Tokenize::tokenize(std::string line)
+void Tokenize::tokenize(std::string line)
 {
 	unsigned int row = rows.size();
-	int column = 0;
+	unsigned int column = 0;
 	unsigned int pos = 0;
 	Row r;
 	while (!line.empty()) {
 		pos = line.find('\t');
 		++column;
 
-		if (pos == 0 && row == 0) {
+		if (pos == 0 && row == 0)
+		{
 			std::cout << "ERROR: There is an error in the  " << row + 1 << " row " << column + 1 << " column" << std::endl;
 			std::abort();
 		}
-		else if (pos == 0) {
+		else if (pos == 0)
+		{
 			std::string s;
 			s += "WARNING: There is not argument in  ";
 			s += std::to_string(row + 1);
@@ -27,12 +29,17 @@ std::vector<Row> Tokenize::tokenize(std::string line)
 		std::string s = line.substr(0, pos);
 		r.addRowValue(s);
 		if (pos != std::string::npos && !line.empty())
+		{
 			s = line.substr(pos, 1);
+		}
 		if (pos != std::string::npos)
+		{
 			line.erase(pos, 1);
+		}
 		line.erase(0, pos);
 
-		if (line.empty() && s == "\t") {
+		if (line.empty() && s == "\t")
+		{
 			std::string s;
 			s += "WARNING: There is not argument in  ";
 			s += std::to_string(row + 1);
@@ -44,7 +51,8 @@ std::vector<Row> Tokenize::tokenize(std::string line)
 	}
 
 	rows.push_back(r);
-	if (!rows[0].getRowValues().empty() && row != 0 && rows[0].getRowValues().size() < r.getRowValues().size()) {
+	if (!rows[0].getRowValues().empty() && row != 0 && rows[0].getRowValues().size() < r.getRowValues().size())
+	{
 		std::string s;
 		s += "WARNING: The number of arguments is large in ";
 		s += std::to_string(row + 1);
@@ -56,10 +64,9 @@ std::vector<Row> Tokenize::tokenize(std::string line)
 		rows.pop_back();
 		rows.push_back(rr);
 	}
-	return std::vector<Row>();
 }
 
-std::vector<Row> Tokenize::getRows()
+const std::vector<Row>& Tokenize::getRows()
 {
 	return rows;
 }

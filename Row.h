@@ -4,12 +4,12 @@
 class Row : public IRow
 {
 public:
-	std::vector<std::string> getRowValues();
-	std::vector<Warning> getWarnings();
+	const std::vector<std::string>& getRowValues() const;
+	const std::vector<Warning>& getWarnings() const;
 	void addRowValue(std::string);
 	void addWarning(Warning);
 private:
-	std::vector<std::string> val;
-	std::vector<Warning> wornings;
+	std::vector<std::string> values;
+	std::vector<Warning> warnings;
 };
 

@@ -2,11 +2,11 @@
 #include "Row.h"
 #include <iostream>
 
-class Tokenize : public Row
+class Tokenize
 {
 public:
-	std::vector<Row> tokenize(std::string line);
-	std::vector<Row> getRows();
+	void tokenize(std::string line);
+	const std::vector<Row>& getRows();
 private:
 	std::vector<Row> rows;
 };

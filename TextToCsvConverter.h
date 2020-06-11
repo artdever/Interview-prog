@@ -6,11 +6,13 @@
 class TextToCsvConverter : public Converter
 {
 public:
-	void convert(std::string input);
+	TextToCsvConverter();
+	void convert(std::string input, bool printwarnings = false);
 	void write(std::string output);
-	void convertAndWrite(std::string input, std::string output);
-	void printWarnings();
+	void convertAndWrite(std::string input, std::string output, bool printwarnings = false);
 private:
 	Tokenize tokenizer;
+	
+	void printWarnings();
 };
 

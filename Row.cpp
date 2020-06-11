@@ -1,21 +1,21 @@
 #include "Row.h"
 
-std::vector<std::string> Row::getRowValues()
+const std::vector<std::string>& Row::getRowValues() const
 {
-	return val;
+	return values;
 }
 
-std::vector<Warning> Row::getWarnings()
+const std::vector<Warning>& Row::getWarnings() const
 {
-	return wornings;
+	return warnings;
 }
 
 void Row::addRowValue(std::string s)
 {
-	val.push_back(s);
+	values.push_back(s);
 }
 
 void Row::addWarning(Warning w)
 {
-	wornings.push_back(w);
+	warnings.push_back(w);
 }
