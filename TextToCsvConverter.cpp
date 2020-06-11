@@ -1,16 +1,16 @@
 #include "TextToCsvConverter.h"
 #include "Tokenize.h"
 
-TextToCsvConverter::TextToCsvConverter() : tokenizer()
+TextToCsvConverter::TextToCsvConverter(std::string inputPath, std::string outputPath) 
+	: inputPath(inputPath), outputPath(outputPath), tokenizer()
 {
 }
 
 void TextToCsvConverter::convert(std::string input, bool printWarnings)
 {
 	std::string line;
-	std::string path = __argv[1]; //"./files/input/";
-	path += input;
-	std::ifstream myFile(path, std::ios::out);
+	std::string InputFile = inputPath + input;
+	std::ifstream myFile(InputFile, std::ios::out);
 
 	if (myFile.is_open())
 	{
@@ -31,9 +31,8 @@ void TextToCsvConverter::convert(std::string input, bool printWarnings)
 
 void TextToCsvConverter::write(std::string output)
 {
-	std::string path = __argv[2]; //"./files/output/";
-	path += output;
-	std::ofstream newfile(path);
+	std::string outputFile = outputPath + output;
+	std::ofstream newfile(outputFile);
 	
 	for (std::vector<Row>::const_iterator itrRows = tokenizer.getRows().begin(); itrRows != tokenizer.getRows().end(); ++itrRows)
 	{

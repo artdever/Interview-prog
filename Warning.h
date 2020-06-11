@@ -3,6 +3,7 @@
 
 struct Warning
 {
-	Warning(std::string s) : warning(s) {};
+	Warning(std::string s) 
+		: warning(s) {};
 	std::string warning;
 };
