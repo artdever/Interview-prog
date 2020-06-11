@@ -18,7 +18,7 @@ void Tokenize::tokenize(std::string line)
 		else if (pos == 0)
 		{
 			std::string s;
-			s += "WARNING: There is not argument in  ";
+			s += "WARNING: There is no argument in  ";
 			s += std::to_string(row + 1);
 			s += " row ";
 			s += std::to_string(column);
@@ -54,7 +54,7 @@ void Tokenize::tokenize(std::string line)
 	if (!rows[0].getRowValues().empty() && row != 0 && rows[0].getRowValues().size() < r.getRowValues().size())
 	{
 		std::string s;
-		s += "WARNING: The number of arguments is large in ";
+		s += "WARNING: The number of arguments is higher than expected in ";
 		s += std::to_string(row + 1);
 		s += " row\n";
 		Row rr;
