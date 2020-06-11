@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class Converter
+class IConverter
 {
 public:
 	virtual void convert(std::string input, bool printWarning) = 0;

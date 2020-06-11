@@ -3,7 +3,7 @@
 #include "IConverter.h"
 #include "Tokenize.h"
 
-class TextToCsvConverter : public Converter
+class TextToCsvConverter : public IConverter
 {
 public:
 	TextToCsvConverter(std::string inputPath, std::string outputPath);
