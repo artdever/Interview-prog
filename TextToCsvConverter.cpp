@@ -45,10 +45,39 @@ void TextToCsvConverter::write(std::string output)
 	newfile.close();
 }
 
-void TextToCsvConverter::convertAndWrite(std::string input, std::string output, bool printwarnings)
+void TextToCsvConverter::convertAndWrite(std::string input, std::string output, bool printWarnings)
 {
-	convert(input);
-	write(output);
+	std::string line;
+	std::string InputFile = inputPath + input;
+	std::ifstream myFile(InputFile, std::ios::out);
+
+	if (myFile.is_open())
+	{
+		std::string outputFile = outputPath + output;
+		std::ofstream newfile(outputFile);
+		int i = 0;
+			while (getline(myFile, line))
+			{
+				tokenizer.tokenize(line);
+				int argsSize = tokenizer.getRows()[i].getRowValues().size();
+				for(int j = 0; j < argsSize; ++j)
+				{
+					newfile << tokenizer.getRows()[i].getRowValues()[j] << ";";
+				}
+				newfile << "\n";
+				++i;
+			}
+			myFile.close();
+			newfile.close();
+	}
+	else
+	{
+		std::cout << "Unable to open file";
+	}
+	if (printWarnings)
+	{
+		this->printWarnings();
+	}
 }
 
 void TextToCsvConverter::printWarnings()

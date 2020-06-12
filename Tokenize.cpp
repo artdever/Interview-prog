@@ -60,7 +60,9 @@ void Tokenize::tokenize(std::string line)
 		Row rr;
 		rr.addWarning(Warning(s));
 		for (unsigned int i = 0; i < rows[0].getRowValues().size(); ++i)
+		{
 			rr.addRowValue("\t");
+		}
 		rows.pop_back();
 		rows.push_back(rr);
 	}
